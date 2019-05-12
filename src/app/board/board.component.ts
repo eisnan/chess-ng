@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { BoardService } from '../core/services/board.service';
+import {Component, OnInit} from '@angular/core';
+import {BoardService} from '../core/services/board.service';
+import {ChessBoardDto, SquareDto} from './model';
 
 @Component({
   selector: 'cm-board',
@@ -8,10 +9,31 @@ import { BoardService } from '../core/services/board.service';
 })
 export class BoardComponent implements OnInit {
 
-  constructor(private boardService: BoardService) { }
+  private chessBoard: ChessBoardDto;
+  private model: SquareDto[][];
+
+  constructor(private boardService: BoardService) {
+  }
 
   ngOnInit() {
-    this.boardService.getBoard();
+    this.startGame();
   }
+
+  startGame() {
+    this.boardService.getBoard().subscribe(data => {
+      console.log(data);
+      this.chessBoard = data;
+      this.model = this.chessBoard.model;
+    });
+  }
+
+  drawChessBoard() {
+    return false;
+  }
+
+  isWhiteColor(file, rank) {
+    console.log(file, rank)
+  }
+
 
 }

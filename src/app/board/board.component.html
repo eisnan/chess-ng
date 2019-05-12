@@ -1,3 +1,18 @@
-<p>
-  board works!
-</p>
+<div class="container">
+
+  <div class="row">
+    <div class="btn-toolbar">
+      <button type="submit" class="btn btn-success" (click)="startGame()">Start game</button>
+      <button type="submit" class="btn btn-success" (click)="startGame()">Load game</button>
+    </div>
+  </div>
+
+  <div *ngFor="let row of model; let i = index">
+    <div class="board-square" *ngFor="let col of row; let j = index"
+         [style.background]="model[i][j].col === 'W' ? '#FECE9E' : '#D18B46'">
+      <span class="square-name">{{model[i][j].pos}}</span>
+      <div *ngIf="model[i][j].pc != null" class="piece"
+           [style.background-image]="'url(./assets/images/' + model[i][j].pc + '.png)'"></div>
+    </div>
+  </div>
+</div>

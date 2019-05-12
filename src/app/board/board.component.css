@@ -1,0 +1,42 @@
+chess-board {
+  border: 1px #444 solid;
+  display: inline-block;
+  height: 1000px;
+  width: 1000px;
+}
+
+.board-square {
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+}
+
+.square-name {
+  font-family: verdana;
+  font-size: 11px;
+  color: darkblue;
+  padding: 2px;
+  position: absolute;
+}
+
+.piece {
+  position: relative;
+  top: 10px;
+  left: 10px;
+  width: 75px;
+  height: 75px;
+}
+
+.game-list {
+  display: block;
+  padding-bottom: 15px;
+}
+
+.game-list a {
+  margin-right: 12px;
+}
+
+.over {
+  box-sizing: border-box;
+  border: 5px grey solid;
+}
