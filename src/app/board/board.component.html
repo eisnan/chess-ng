@@ -7,12 +7,17 @@
     </div>
   </div>
 
-  <div *ngFor="let row of model; let i = index">
-    <div class="board-square" *ngFor="let col of row; let j = index"
-         [style.background]="model[i][j].col === 'W' ? '#FECE9E' : '#D18B46'">
-      <span class="square-name">{{model[i][j].pos}}</span>
-      <div *ngIf="model[i][j].pc != null" class="piece"
-           [style.background-image]="'url(./assets/images/' + model[i][j].pc + '.png)'"></div>
+  <div class="container">
+    <div *ngFor="let row of model; let i = index">
+      <div class="board-square noselect" *ngFor="let square of row; let j = index"
+           [style.background]="square.col === 'W' ? '#FECE9E' : '#D18B46'" #wrap
+      >
+        <span class="square-name">{{model[i][j].pos}}</span>
+        <div *ngIf="square.pc != null" class="piece"
+             [style.background-image]="'url(./assets/images/' + square.pc + '.png)'"
+             (click)="toggleSelection(wrap)"
+        ></div>
+      </div>
     </div>
   </div>
 </div>

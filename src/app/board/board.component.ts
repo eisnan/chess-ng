@@ -11,6 +11,7 @@ export class BoardComponent implements OnInit {
 
   private chessBoard: ChessBoardDto;
   private model: SquareDto[][];
+  private clicked: boolean;
 
   constructor(private boardService: BoardService) {
   }
@@ -32,7 +33,18 @@ export class BoardComponent implements OnInit {
   }
 
   isWhiteColor(file, rank) {
-    console.log(file, rank)
+    console.log(file, rank);
+  }
+
+  toggleSelection(wrap: HTMLElement) {
+    const classList = wrap.classList;
+    const selected = 'selected';
+    if (wrap.classList.contains(selected)) {
+      wrap.classList.remove(selected);
+    } else {
+      wrap.classList.add(selected);
+    }
+
   }
 
 
